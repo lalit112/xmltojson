@@ -18,11 +18,6 @@ Below are the steps needed to run the application
 * Docker
 * Localstack
 
-### Installing
-
-* How/where to download your program
-* Any modifications needed to be made to files/folders
-
 ### Executing program
 
 * Download or clone the repository in your system.
