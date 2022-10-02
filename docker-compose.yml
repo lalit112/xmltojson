@@ -1,0 +1,39 @@
+# For running application on localstack environment
+
+version: '3.2'
+services:
+  localstack:
+    image: localstack/localstack:latest
+    container_name: localstack_demo
+    ports:
+      - '4563-4599:4563-4599'
+      - '8055:8080'
+    environment:
+      - SERVICES=s3
+      - DEBUG=1
+      - DATA_DIR=/tmp/localstack/data
+    volumes:
+      - './.localstack:/tmp/localstack'
+      - '/var/run/docker.sock:/var/run/docker.sock'
+
+
+# For running application in actual environment
+
+#version: '3.1'
+#services:
+#      conversionapplication:
+#          image: conversion:latest
+#          environment:
+#            - AWS_ACCESS_KEY_ID=test
+#            - AWS_SECRET_ACCESS_KEY=test
+#            - AWS_DEFAULT_REGION=us-east-1
+#            - AWS_END_POINT_URL= http://localstack:4567
+#            - BUCKET_NAME= input-xml-bucket
+#            - UPLOAD_BUCKET_NAME = output-json-bucket
+#            - QUEUE_NAME = input-queue
+#            - QUEUE_URL = http://localstack:4567/000000000000/input-queue
+#          ports:
+#            - '4566-4583:4566-4583'
+#          volumes:
+#            - './.conversionapplication:/tmp/conversionapplication'
+#            - '/var/run/docker.sock:/var/run/docker.sock'
